@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambridge Academy - Pre-KG to Class 8</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #0f766e;
+            --accent: #f59e0b;
+            --light: #f8fafc;
+            --dark: #1e293b;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+        }
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            height: 100vh;
+            min-height: 600px;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .grade-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .grade-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .facility-card {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .facility-card:hover {
+            transform: scale(1.02);
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .teacher-card {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .mobile-menu {
+            display: none;
+        }
+
+        .counter-item {
+            transition: transform 0.3s ease;
+        }
+
+        .counter-item:hover {
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+
+            .desktop-menu {
+                display: none;
+            }
+            
+            .hero {
+                height: 80vh;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/837af6ff-9202-4f43-95b4-c45f0082fc00.png" alt="Cambridge Academy logo with golden shield emblem and blue background" class="h-12 w-12 mr-3">
+                    <div>
+                        <h1 class="text-xl font-bold text-blue-600">CAMBRIDGE ACADEMY</h1>
+                        <p class="text-sm text-gray-600">Pre-KG to Class 8</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="desktop-menu hidden md:flex space-x-8">
+                    <a href="#home" class="text-blue-600 hover:text-blue-800 font-medium">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
+                    <a href="#academics" class="text-gray-700 hover:text-blue-600 font-medium">Academics</a>
+                    <a href="#facilities" class="text-gray-700 hover:text-blue-600 font-medium">Facilities</a>
+                    <a href="#gallery" class="text-gray-700 hover:text-blue-600 font-medium">Gallery</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu md:hidden text-blue-600" onclick="toggleMenu()">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobileNav" class="mobile-menu hidden md:hidden bg-white shadow-lg">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#home" class="text-blue-600 hover:text-blue-800 font-medium">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-600 font-medium">About</a>
+                    <a href="#academics" class="text-gray-700 hover:text-blue-600 font-medium">Academics</a>
+                    <a href="#facilities" class="text-gray-700 hover:text-blue-600 font-medium">Facilities</a>
+                    <a href="#gallery" class="text-gray-700 hover:text-blue-600 font-medium">Gallery</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Slider -->
+    <section id="home" class="hero pt-24 text-white">
+        <!-- Slide 1 -->
+        <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=80');">
+            <div class="container mx-auto px-6 h-full flex items-center">
+                <div class="hero-content text-center max-w-3xl mx-auto">
+                    <h2 class="text-4xl md:text-6xl font-bold mb-6">Shaping Tomorrow's Leaders Today</h2>
+                    <p class="text-xl md:text-2xl mb-8">
+                        Excellence in education from Pre-KG to Class 8 with a focus on holistic development and academic excellence.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="#admission" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-semibold transition duration-300">
+                            Apply Now
+                        </a>
+                        <a href="#tour" class="border-2 border-white hover:bg-white hover:text-blue-600 text-white px-8 py-3 rounded-full font-semibold transition duration-300">
+                            Schedule a Tour
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 2 -->
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1497636577773-f1231844b336?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=80');">
+            <div class="container mx-auto px-6 h-full flex items-center">
+                <div class="hero-content text-center max-w-3xl mx-auto">
+                    <h2 class="text-4xl md:text-6xl font-bold mb-6">Nurturing Young Minds</h2>
+                    <p class="text-xl md:text-2xl mb-8">
+                        Creating a stimulating environment where curiosity is encouraged and talents are discovered.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="#academics" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-semibold transition duration-300">
+                            Our Programs
+                        </a>
+                        <a href="#facilities" class="border-2 border-white hover:bg-white hover:text-blue-600 text-white px-8 py-3 rounded-full font-semibold transition duration-300">
+                            Our Facilities
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 3 -->
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?ixlib=rb-4.0.3&auto=format&fit=crop&w=1800&q=80');">
+            <div class="container mx-auto px-6 h-full flex items-center">
+                <div class="hero-content text-center max-w-3xl mx-auto">
+                    <h2 class="text-4xl md:text-6xl font-bold mb-6">Building Bright Futures</h2>
+                    <p class="text-xl md:text-2xl mb-8">
+                        Preparing students for success with a balanced approach to academics, arts, and athletics.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="#contact" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-semibold transition duration-300">
+                            Contact Us
+                        </a>
+                        <a href="#gallery" class="border-2 border-white hover:bg-white hover:text-blue-600 text-white px-8 py-3 rounded-full font-semibold transition duration-300">
+                            View Gallery
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slider Controls -->
+        <div class="absolute bottom-6 left-0 right-0 z-20 flex justify-center space-x-2">
+            <button class="slide-control w-3 h-3 rounded-full bg-white opacity-50 focus:outline-none" data-slide="0"></button>
+            <button class="slide-control w-3 h-3 rounded-full bg-white opacity-50 focus:outline-none" data-slide="1"></button>
+            <button class="slide-control w-3 h-3 rounded-full bg-white opacity-50 focus:outline-none" data-slide="2"></button>
+        </div>
+        
+        <!-- Navigation Arrows -->
+        <button class="absolute left-4 top-1/2 transform -translate-y-1/2 z-20 text-white text-3xl focus:outline-none slide-prev">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="absolute right-4 top-1/2 transform -translate-y-1/2 z-20 text-white text-3xl focus:outline-none slide-next">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </section>
+
+    <!-- Stats Counter Section -->
+    <section class="py-16 bg-blue-600 text-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="counter-item text-center">
+                    <div class="text-4xl md:text-5xl font-bold mb-2" id="years-counter">0</div>
+                    <div class="text-lg">Years of Excellence</div>
+                </div>
+                <div class="counter-item text-center">
+                    <div class="text-4xl md:text-5xl font-bold mb-2" id="students-counter">0</div>
+                    <div class="text-lg">Happy Students</div>
+                </div>
+                <div class="counter-item text-center">
+                    <div class="text-4xl md:text-5xl font-bold mb-2" id="teachers-counter">0</div>
+                    <div class="text-lg">Qualified Teachers</div>
+                </div>
+                <div class="counter-item text-center">
+                    <div class="text-4xl md:text-5xl font-bold mb-2" id="awards-counter">0</div>
+                    <div class="text-lg">Awards Won</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-4">About Cambridge Academy</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Founded in 1995, Cambridge Academy has been providing quality education and nurturing young minds for over 25 years.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-graduation-cap text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Academic Excellence</h3>
+                    <p class="text-gray-600">Consistently top-performing students with 98% distinction rate</p>
+                </div>
+
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Experienced Faculty</h3>
+                    <p class="text-gray-600">Certified teachers with average 10+ years of teaching experience</p>
+                </div>
+
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Safe Environment</h3>
+                    <p class="text-gray-600">24/7 security surveillance and child-safe campus facilities</p>
+                </div>
+
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heart text-orange-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Holistic Development</h3>
+                    <p class="text-gray-600">Focus on sports, arts, and character building alongside academics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic Programs -->
+    <section id="academics" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-4">Academic Programs</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Comprehensive curriculum designed for different age groups from Pre-KG to Class 8
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Pre-KG -->
+                <div class="grade-card bg-white rounded-lg shadow-md p-6">
+                    <div class="w-20 h-20 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-baby text-pink-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Pre-KG</h3>
+                    <p class="text-gray-600 text-center mb-4">(2.5 - 3.5 years)</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Play-based learning</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Social skills development</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Basic motor skills</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Creative activities</li>
+                    </ul>
+                </div>
+
+                <!-- KG -->
+                <div class="grade-card bg-white rounded-lg shadow-md p-6">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-puzzle-piece text-blue-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Kindergarten</h3>
+                    <p class="text-gray-600 text-center mb-4">(3.5 - 5.5 years)</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Phonics and reading readiness</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Numeracy skills</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Creative expression</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Science exploration</li>
+                    </ul>
+                </div>
+
+                <!-- Primary School -->
+                <div class="grade-card bg-white rounded-lg shadow-md p-6">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-book-open text-green-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Primary School</h3>
+                    <p class="text-gray-600 text-center mb-4">(Class 1-5)</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Core subject foundation</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Project-based learning</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Computer literacy</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Language development</li>
+                    </ul>
+                </div>
+
+                <!-- Middle School -->
+                <div class="grade-card bg-white rounded-lg shadow-md p-6">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-microscope text-purple-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Middle School</h3>
+                    <p class="text-gray-600 text-center mb-4">(Class 6-8)</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Advanced curriculum</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>STEM focus</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Career guidance</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Leadership programs</li>
+                    </ul>
+                </div>
+
+                <!-- Special Programs -->
+                <div class="grade-card bg-white rounded-lg shadow-md p-6">
+                    <div class="w-20 h-20 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-star text-orange-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Special Programs</h3>
+                    <p class="text-gray-600 text-center mb-4">All Grades</p>
+                    <ul class="text-gray-600 space-y-2">
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Robotics & Coding</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Art & Music</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Sports Academy</li>
+                        <li><i class="fas fa-check text-green-500 mr-2"></i>Language Clubs</li>
+                    </ul>
+                </div>
+
+                 <!-- Admission Info - Enhanced -->
+                <div class="grade-card bg-gradient-to-br from-blue-600 to-blue-800 text-white rounded-lg shadow-md p-6 flex flex-col">
+                    <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-graduation-cap text-blue-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Admissions Open</h3>
+                    <p class="text-center mb-2 font-medium">2024-25 Academic Year</p>
+                    <div class="mb-4 text-center">
+                        <span class="inline-block bg-yellow-400 text-blue-800 text-xs font-semibold px-3 py-1 rounded-full uppercase">
+                            Limited Seats Available
+                        </span>
+                    </div>
+                    
+                    <div class="mt-auto space-y-3">
+                        <div class="flex items-center">
+                            <i class="fas fa-calendar-check text-yellow-300 mr-2"></i>
+                            <span class="text-sm">Registration Deadline: May 31, 2024</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-file-alt text-yellow-300 mr-2"></i>
+                            <span class="text-sm">Entrance Assessment: June 15, 2024</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-rupee-sign text-yellow-300 mr-2"></i>
+                            <span class="text-sm">Early Bird Discount: 10% until April 30</span>
+                        </div>
+                        
+                        <div class="pt-4 flex flex-col gap-2">
+                            <a href="#admission" class="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold text-center hover:bg-gray-100 transition duration-300">
+                                Apply Now
+                            </a>
+                            <a href="#contact" class="border-2 border-white text-white px极简 py-2 rounded-full font-semibold text-center hover:bg-white hover:text-blue-600 transition duration-300">
+                                Contact Us
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Admission Information -->
+            <div class="mt-16 bg-white rounded-lg shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-blue-600 mb-6 text-center">Admission Process</h3>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="text-center p-4">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-blue-600 font-bold text-xl">1</span>
+                        </div>
+                        <h4 class="font-semibold mb-2">Inquiry</h4>
+                        <p class="text-sm text-gray-600">Submit online form or visit campus</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-blue-600 font-bold text-xl">2</span>
+                        </div>
+                        <h4 class="font-semibold mb-2">Assessment</极简>
+                        <p class="text-sm text-gray-600">Student interaction and evaluation</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="w-极简 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-blue-600 font-bold text-xl">3</span>
+                        </div>
+                        <h4 class="font-semibold mb-2">Documentation</h4>
+                        <p class="text-sm text-gray-600">Submit required documents</p>
+                    </div>
+                    <div class="text-center p-4">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-blue-600 font-bold text-xl">4</span>
+                        </div>
+                        <h4 class="font-semibold mb-2">Confirmation</h4>
+                        <p class="text-sm text-gray-600">Fee payment and enrollment</p>
+                    </div>
+                </div>
+                
+                <div class="mt-8 text-center">
+                    <a href="#contact" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800">
+                        <span>Download Admission Brochure</span>
+                        <i class="fas fa-download ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+                <!-- Admission Info -->
+                <div class="grade-card bg-blue-600 text-white rounded-lg shadow-md p-6">
+                    <div class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-graduation-cap text-blue-600 text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-3">Admissions Open</h3>
+                    <p class="text-center mb-4">2024-25 Academic Year</p>
+                    <div class="text-center">
+                        <a href="#admission" class="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold inline-block hover:bg-gray-100 transition duration-300">
+                            Apply Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="facilities" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-4">World-Class Facilities</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    State-of-the-art infrastructure designed to enhance learning and development
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="facility-card bg-white rounded-lg shadow-lg">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fd9bc10e-7d1c-42c5-acc6-d3070d73fdd7.png" alt="Modern science laboratory with students conducting experiments using microscopes and beakers" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Science Labs</h3>
+                        <p class="text-gray-600">Fully equipped physics, chemistry, and biology laboratories for hands-on learning.</p>
+                    </div>
+                </div>
+
+                <div class="facility-card bg-white rounded-lg shadow-lg">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4d18489b-0676-4156-b04b-1bbb12e96c93.png" alt="Spacious library with wooden shelves filled with books and students reading at tables" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Digital Library</h3>
+                        <p class="text-gray-600">Over 10,000 books with digital resources and quiet study areas.</p>
+                    </div>
+                </div>
+
+                <div class="facility-card bg-white rounded-lg shadow-lg">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f0621696-dd71-4892-8f99-08e0726e387d.png" alt="Computer lab with modern desktop computers and students learning coding" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Computer Lab</h3>
+                        <p class="text-gray-600">Modern computers with latest software for technology education.</p>
+                    </div>
+                </div>
+
+                <div class="facility-card bg-white rounded-lg shadow-lg">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3de45490-02b1-427a-a7d4-f513bc121ed5.png" alt="Sports field with basketball court, running track, and children playing football" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Sports Complex</h3>
+                        <p class="text-gray-600">Basketball court, football field, and indoor sports facilities.</p>
+                    </div>
+                </div>
+
+                <div class="facility-card bg-white rounded-lg shadow-lg">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/071e27e1-3553-47da-bfc9-8972e787258f.png" alt="Art room with easels, paint supplies, and children's artwork displayed on walls" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Art & Music Room</h3>
+                        <p class="text-gray-600">Dedicated spaces for creative expression and musical education.</p>
+                    </div>
+                </div>
+
+                <div class="facility-card bg-white rounded-lg shadow-lg">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bfdf4f80-b8be-41be-ba57-4f167e67027c.png" alt="Clean and modern cafeteria with healthy food options and students eating together" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3">Cafeteria</h3>
+                        <p class="text-gray-600">Healthy and nutritious meals prepared in hygienic conditions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-4">School Gallery</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Glimpses of life at Cambridge Academy - Learning, Growing, and Excelling together
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2ac3623b-65f0-444e-a6f6-1b48b80fd7c4.png" alt="Annual day celebration with students performing on stage in cultural costumes" class="w-full h-48 object-cover rounded">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3f185dd5-8978-454f-90c8-af9bcb4fa966.png" alt="Science fair exhibition with student projects and experiments on display" class="w-full h-48 object-cover rounded">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/84d73754-7cd9-4bd2-bb75-72e67a284c67.png" alt="Sports day event with children participating in races and team games" class="w-full h-48 object-cover rounded">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7637ebb1-90f6-4ebe-b148-91f25cd25109.png" alt="Classroom learning session with engaged students and interactive teaching" class="w-full h-48 object-cover rounded">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fec163f3-2c99-4768-a386-1ac224bf6e70.png" alt="Art exhibition showcasing colorful paintings and crafts made by students" class="w-full h-48 object-cover rounded">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/63c102b6-0f4c-4547-abbf-d55f62bf6f36.png" alt="Field trip to museum with students learning about history and culture" class="w-full h-48 object-cover rounded">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/52e446ef-dba5-40da-bfbc-0dd84d1f02c4.png" alt="Music recital with young musicians performing on various instruments" class="w-full h-48 object-cover rounded">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a053d5c2-737d-412e-8717-c99b20692cee.png" alt="Robotics workshop with students building and programming robots" class="w-full h-48 object-cover rounded">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-blue-600 text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">What Parents Say</h2>
+                <p class="max-w-2xl mx-auto">
+                    Hear from our parent community about their experience with Cambridge Academy
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Rajesh Kumar</h4>
+                            <p class="text-sm text-gray-600">Parent of Class 5 Student</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"The teachers are exceptional and truly care about each child's development. My daughter has flourished academically and socially."</p>
+                    <div class="flex mt-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+
+                <div class="testimonial-card p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Priya Sharma</h4>
+                            <p class="text-sm text-gray-600">Parent of KG Student</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"The kindergarten program is wonderful! My son looks forward to school every day and has developed amazing social skills."</p>
+                    <div class="flex mt-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+
+                <div class="testimonial-card p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Michael Chen</h4>
+                            <p class="text-sm text-gray-600">Parent of Class 8 Student</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"The middle school program has prepared my child exceptionally well for high school. The teachers go above and beyond."</p>
+                    <div class="flex mt-4">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-600 mb-4">Contact Us</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    We'd love to hear from you. Reach out to schedule a campus tour or learn more about our programs.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Get In Touch</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-map-marker-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Address</h4>
+                                <p class="text-gray-600">123 Education Street, Academic District<br>City, State 560001</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-phone text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Phone</h4>
+                                <p class="text-gray-600">+91 98765 43210<br>+91 98765 43211</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Email</h4>
+                                <p class="text-gray-600">admissions@cambridgeacademy.edu<br>info@cambridgeacademy.edu</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fas fa-clock text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Office Hours</h4>
+                                <p class="text-gray-600">Monday - Friday: 8:00 AM - 5:00 PM<br>Saturday: 9:00 AM - 1:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Send Message</h3>
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                                <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                                <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                            <input type="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f747f51c-cfb2-42d1-a1fc-29718adf5ed6.png" alt="Cambridge Academy logo with golden shield emblem" class="h-16 w-16 mb-4">
+                    <h3 class="text-xl font-bold mb-4">Cambridge Academy</h3>
+                    <p class="text-gray-400">Excellence in education since 1995. Shaping young minds for a brighter future.</p>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#academics" class="text-gray-400 hover:text-white">Academics</a></li>
+                        <li><a href="#facilities" class="text-gray-400 hover:text-white">Facilities</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Programs</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Pre-KG Program</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Kindergarten</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Primary School</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Middle School</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Special Programs</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Connect With Us</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center hover:bg-blue-500">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center hover:bg-blue-900">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400">Subscribe to our newsletter for updates</p>
+                    <div class="mt-2 flex">
+                        <input type="email" placeholder="Your email" class="px-3 py-2 bg-gray-700 text-white rounded-l-lg focus:outline-none">
+                        <button class="bg-blue-600 px-4 py-2 rounded-r-lg hover:bg-blue-700">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">© 2024 Cambridge Academy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('hidden');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Simple form validation
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const inputs = this.querySelectorAll('input, textarea');
+            let isValid = true;
+
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    input.classList.add('border-red-500');
+                    isValid = false;
+                } else {
+                    input.classList.remove('border-red-500');
+                }
+            });
+
+            if (isValid) {
+                alert('Thank you for your message! We will get back to you soon.');
+                this.reset();
+            }
+        });
+
+        // Add animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.grade-card, .facility-card, .testimonial-card, .counter-item');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Hero Slider Functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        const controls = document.querySelectorAll('.slide-control');
+        const slideCount = slides.length;
+        let slideInterval;
+
+        function showSlide(index) {
+            // Reset all slides and controls
+            slides.forEach(slide => slide.classList.remove('active'));
+            controls.forEach(control => control.classList.remove('bg-white', 'opacity-100'));
+            
+            // Show selected slide and update control
+            slides[index].classList.add('active');
+            controls[index].classList.add('bg-white', 'opacity-100');
+            
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            let next = currentSlide + 1;
+            if (next >= slideCount) next = 0;
+            showSlide(next);
+        }
+
+        function prevSlide() {
+            let prev = currentSlide - 1;
+            if (prev < 0) prev = slideCount - 1;
+            showSlide(prev);
+        }
+
+        function startSlider() {
+            slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        }
+
+        function stopSlider() {
+            clearInterval(slideInterval);
+        }
+
+        // Initialize slider controls
+        controls.forEach((control, index) => {
+            control.addEventListener('click', () => {
+                stopSlider();
+                showSlide(index);
+                startSlider();
+            });
+        });
+
+        // Initialize navigation arrows
+        document.querySelector('.slide-next').addEventListener('click', () => {
+            stopSlider();
+            nextSlide();
+            startSlider();
+        });
+
+        document.querySelector('.slide-prev').addEventListener('click', () => {
+            stopSlider();
+            prevSlide();
+            startSlider();
+        });
+
+        // Counter animation
+        function animateCounter(elementId, finalValue, duration) {
+            let startTime = null;
+            const element = document.getElementById(elementId);
+            const startValue = 0;
+            const step = (timestamp) => {
+                if (!startTime) startTime = timestamp;
+                const progress = Math.min((timestamp - startTime) / duration, 1);
+                const value = Math.floor(progress * (finalValue - startValue) + startValue);
+                element.textContent = value.toLocaleString();
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    element.textContent = finalValue.toLocaleString();
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.grade-card, .facility-card, .testimonial-card, .counter-item');
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            });
+
+            // Initialize slider
+            showSlide(0);
+            startSlider();
+
+            // Initialize counters when they come into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter('years-counter', 25, 2000);
+                        animateCounter('students-counter', 1200, 2000);
+                        animateCounter('teachers-counter', 65, 2000);
+                        animateCounter('awards-counter', 48, 2000);
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            observer.observe(document.querySelector('.counter-item'));
+
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Initial check
+        });
+    </script>
+</body>
+</html>
